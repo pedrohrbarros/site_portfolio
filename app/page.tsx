@@ -9,12 +9,13 @@ import Link from "next/link";
 import Carousel from "@/components/Carousel";
 import { useSliderStore } from "@/hooks/slider";
 import Skill from "@/components/Skill";
+import { Project } from '@/components/Project'
+import { MdEmail } from "react-icons/md";
 
 export default function Home() {
   const [is_open, toggleIsOpen] = useState<boolean>(false)
   const [description_label, setDescriptionLabel] = useState<string[]>(['responsive websites', 'performatic servers', 'smooth mobile applications'])
   const slider_store = useSliderStore((state) => state)
-
   useEffect(() => {
     AOS.init({
       once: false,
@@ -22,9 +23,9 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="w-full min-h-screen h-full flex flex-col justify-start items-center relative">
+    <main className="w-full overflow-x-hidden min-h-screen h-full flex flex-col justify-start items-center relative">
       <motion.nav 
-        className="w-full h-full flex flex-col text-center items-center justify-start bg-gray-800 overflow-y-hidden"
+        className="w-full h-full flex flex-col text-center items-center justify-start bg-gray-800 overflow-y-hidden fixed top- z-10"
         animate ={{
           height: is_open ? '70vh' : '10vh'
         }}
@@ -37,7 +38,7 @@ export default function Home() {
             Pedro Barros
           </h1>
           <div className="w-20 h-full hover:bg-indigo-200 transition-all duration-200 flex flex-col justify-center items-center cursor-pointer">
-            <Hamburger toggled={is_open} toggle={toggleIsOpen} />
+            <Hamburger toggled={is_open ?? false} toggle={toggleIsOpen} />
           </div>
         </div>
         <motion.div
@@ -107,19 +108,19 @@ export default function Home() {
           }
         </motion.div>
       </motion.nav>
-      <section id="landing" className="w-full h-[90vh] flex flex-col justify-start flex-wrap items-center bg-transparent ">
+      <section id="landing" className="w-full h-screen flex flex-col justify-start flex-wrap items-center bg-transparent -z-1">
         <div className="w-full h-full relative">
           <Carousel>
-            <div className="w-full h-[90vh] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
-            <div className="w-full h-[90vh] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1457364887197-9150188c107b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
-            <div className="w-full h-[90vh] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
+            <div className="w-full h-screen bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
+            <div className="w-full h-screen bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1457364887197-9150188c107b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
+            <div className="w-full h-screen bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]"/>
           </Carousel>
-          <div className="w-full h-[90vh] flex flex-col justify-center items-start px-[15%] absolute top-0 gap-2 bg-clip-padding backdrop-filter backdrop-blur-sm">
+          <div className="w-full h-screen flex flex-col justify-center items-start px-[15%] absolute top-0 gap-2 bg-clip-padding backdrop-blur-sm">
             <h1 className="text-5xl font-light">{`I'm Pedro Barros.`}</h1>
             <h2 className="text-5xl font-light">I build {description_label.map((text: string, index: number) => (
               index === slider_store.slide_in_view ?
               <motion.span
-              className="bg-slate-500 px-[1px] rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30"
+              className="bg-slate-500 rounded-md bg-clip-padding backdrop-blur-md bg-opacity-30 px-[5px] pb-[2px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
@@ -135,13 +136,13 @@ export default function Home() {
             ))}</h2>
             <div className="w-full h-auto flex flex-row justify-start items-center gap-4 mt-20">
               <button
-                className="p-5 border-[1px] border-black text-black text-lg font-light transition-all hover:border-white hover:text-white duration-200 hover:border-2"
+                className="p-5 border-[1px] border-black text-black text-lg font-light transition-all hover:border-white hover:text-white duration-200"
                 onClick={() => window.open('https://github.com/pedrohrbarros?tab=repositories', '_blank')}
               >
                 View Portfolio
               </button>
               <button
-                className="p-5 border-[1px] border-black text-black text-lg font-light transition-all hover:border-white hover:text-white duration-200 hover:border-2"
+                className="p-5 border-[1px] border-black text-black text-lg font-light transition-all hover:border-white hover:text-white duration-200"
                 onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros-39077b159/', '_blank')}
               >
                 Hire Me
@@ -152,21 +153,21 @@ export default function Home() {
       </section>
       <section
         id="skills"
-        className="w-full h-screen flex flex-row justify-center items-center gap-10 bg-gray-200 py-10"
+        className="w-full h-full sm:h-screen flex flex-row flex-wrap sm:flex-nowrap justify-center items-center gap-10 bg-gray-200 py-10"
       >
         <div
-          className="w-full sm:w-1/2 h-full flex flex-col justify-start items-center pt-52"
+          className="w-full sm:w-1/2 h-auto sm:h-full flex flex-col justify-start items-center pt-32"
         >
-          <h1 className="text-6xl font-extralight text-gray-600" data-aos="zoom-in">
+          <h1 className="text-6xl font-extralight text-gray-600">
             Skills.
           </h1>
         </div>
         <div
-          className="w-full sm:w-1/2 h-full flex flex-col justify-start items-center pt-52 pr-40 gap-4"
+          className="w-full sm:w-1/2 h-auto sm:h-full flex flex-col justify-center sm:justify-start items-center
+          pt-32 px-10 sm:px-0 sm:pr-40 gap-10"
         >
           <p
             className="m-0 p-0 text-gray-600 text-xl font-light text-justify"
-            data-aos="flip-left"
           >
             With expertise in mobile development, web development, and backend servers, I deliver comprehensive tech solutions. I create high-performance mobile apps for iOS and Android, build responsive and user-friendly websites, and design scalable, secure backend server architectures. My skills ensure seamless and reliable performance across all digital platforms.
           </p>
@@ -179,245 +180,161 @@ export default function Home() {
             <Skill skill="Deployment" percentage={52}/>
             <Skill skill="Containerization" percentage={10}/>
           </div>
+          <div className="w-full flex flex-row justify-start items-center flex-nowrap">
+            <Link
+              href="https://github.com/pedrohrbarros"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 font-bold text-xl text-start"
+            >
+              Wanna see all my stacks?
+            </Link>
+          </div>
         </div>
       </section>
-      {/* <section className="w-full h-full min-h-screen flex flex-col justify-center items-center px-10">
-        <div className="w-full h-auto flex flex-col justify-center items-center text-center mb-20 gap-[2px]">
-          <h1 className="text-6xl font-mono text-white m-0 p-0">Skills</h1>
-          <h2 className="text-white font-sans text-2xl m-0 p-0">(Click on the arrow to see more)</h2>
+      <section
+        className="w-full min-h-screen h-full flex flex-col justify-center items-center
+        sm:justify-start sm:items-start gap-10 pt-40"
+        id="projects"
+      >
+        <h1
+          className="text-6xl font-extralight text-gray-600 sm:px-10"
+        >
+          My Projects.
+        </h1>
+        <div className="w-full h-full flex flex-col justify-center items-center">
+            <div className="w-full h-full flex flex-row flex-nowrap justify-center items-center">
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1471666875520-c75081f42081?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Site Portfolio"}
+                status={"Done"}
+                url={"https://github.com/pedrohrbarros/site_portfolio"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Rust Open API"}
+                status={"In Progress"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1644329771909-b651e30c41da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"To-do Mobile APP"}
+                status={"Start Soon"}
+              />
+            </div>
+            <div className="w-full h-full flex flex-row flex-nowrap justify-center items-center">
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1588713029548-2aca8c227954?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Vegan E-commerce"}
+                status={"Start Soon"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Rust Authentication API"}
+                status={"Start Soon"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1667453466805-75bbf36e8707?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Firebase Integration Mobile APP"}
+                status={"Start Soon"}
+              />
+            </div>
+            <div className="w-full h-full flex flex-row flex-nowrap justify-center items-center">
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Interative Dashboard"}
+                status={"Start Soon"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"IA with Rust"}
+                status={"Start Soon"}
+              />
+              <Project.Item
+                cover={"https://images.unsplash.com/photo-1628527304948-06157ee3c8a6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Payment APP"}
+                status={"Start Soon"}
+              />
+            </div>
         </div>
-        <Skill.Main
-          title="Back-end Development"
-          icon={<FaServer color="#FFFFFF" size={100}/>}
-          knowledge_level={3}
-        >
-          <Skill.Item
-            title="Python"
-            icon={<FaPython color="#FFFFFF" size={100}/>}
-            description="Python is a high-level, interpreted programming language known for its readability, simplicity, and versatility."
-            from_date="2018"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Django"
-            icon={<SiDjango color="#FFFFFF" size={100}/>}
-            description="Django is a high-level Python web framework designed for rapid development and clean, pragmatic design. It was created to help developers take applications from concept to completion as swiftly as possible."
-            from_date="2019"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Flask"
-            icon={<BiLogoFlask color="#FFFFFF" size={100}/>}
-            description="Flask is a lightweight and flexible web framework for Python. It's designed to make getting started with web development quick and easy, with the ability to scale up to more complex applications."
-            from_date="2023"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="FastAPI"
-            icon={<SiFastapi  color="#FFFFFF" size={100}/>}
-            description="FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. It is designed to be easy to use and implement, with automatic interactive API documentation and high performance, on par with Node.js and Go."
-            from_date="2024"
-            to_date="2024"
-          />
-          <Skill.Item
-            title="Pandas"
-            icon={<SiPandas  color="#FFFFFF" size={100}/>}
-            description="Pandas is a powerful and widely-used open-source data manipulation and analysis library for Python. It provides data structures and functions needed to work on structured data seamlessly."
-            from_date="2021"
-            to_date="2022"
-          />
-          <Skill.Item
-            title="Node.js"
-            icon={<FaNode color="#FFFFFF" size={100}/>}
-            description="Node.js is a powerful, open-source, server-side runtime environment that executes JavaScript code outside a web browser."
-            from_date="2020"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Bun"
-            icon={<SiBun  color="#FFFFFF" size={100}/>}
-            description="Bun is a new Node.js-compatible runtime that aims to be faster and more efficient, with built-in support for TypeScript, JSX, and various web APIs."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Express"
-            icon={<SiExpress   color="#FFFFFF" size={100}/>}
-            description="Express is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications."
-            from_date="2022"
-            to_date="2024"
-          />
-          <Skill.Item
-            title="Rust"
-            icon={<FaRust color="#FFFFFF" size={100}/>}
-            description="Rust is a systems programming language focused on safety, speed, and concurrency. It ensures memory safety without a garbage collector, making it ideal for performance-critical applications."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Front-end Development"
-          icon={<TbStackFront color="#FFFFFF" size={100}/>}
-          knowledge_level={4}
-        >
-          <Skill.Item
-            title="React.js"
-            icon={<FaReact   color="#FFFFFF" size={100}/>}
-            description="React is a popular JavaScript library for building user interfaces, particularly single-page applications."
-            from_date="2020"
-            to_date="2022"
-          />
-          <Skill.Item
-            title="Next.js"
-            icon={<TbBrandNextjs  color="#FFFFFF" size={100}/>}
-            description="Next.js is a popular React framework for building server-side rendered (SSR) and static web applications."
-            from_date="2022"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Javascript"
-            icon={<IoLogoJavascript color="#FFFFFF" size={100}/>}
-            description="JavaScript is a high-level, interpreted programming language primarily used for creating dynamic and interactive content on web pages."
-            from_date="2020"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Typescript"
-            icon={<SiTypescript color="#FFFFFF" size={100}/>}
-            description="TypeScript is a superset of JavaScript that adds static typing and compile-time type checking."
-            from_date="2021"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Bootstrap"
-            icon={<FaBootstrap color="#FFFFFF" size={100}/>}
-            description="Bootstrap is a popular open-source front-end styiling framework for developing responsive and mobile-first web pages."
-            from_date="2022"
-            to_date="2023"
-          />
-          <Skill.Item
-            title="TailwindCSS"
-            icon={<RiTailwindCssFill color="#FFFFFF" size={100}/>}
-            description="Tailwind CSS is a utility-first CSS framework that provides low-level, reusable utility classes to build custom designs directly in your markup."
-            from_date="2023"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="NextUI"
-            icon={<SiNextui color="#FFFFFF" size={100}/>}
-            description="NextUI is a React-based UI library designed for creating modern and responsive user interfaces. It provides a set of customizable, accessible, and pre-designed components that simplify the development process."
-            from_date="2023"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Database"
-          icon={<FaDatabase color="#FFFFFF" size={100}/>}
-          knowledge_level={4}
-        >
-          <Skill.Item
-            title="SQL"
-            icon={<AiOutlineConsoleSql color="#FFFFFF" size={100}/>}
-            description="SQL (Structured Query Language) is a standardized programming language used for managing and manipulating relational databases."
-            from_date="2021"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Prisma"
-            icon={<SiPrisma color="#FFFFFF" size={100}/>}
-            description="Prisma is an open-source ORM (Object-Relational Mapping) tool for Node.js and TypeScript. It simplifies database access and management by providing a type-safe query builder, migrations, and an intuitive data model definition."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="TypeORM"
-            icon={<TbBrandTypescript color="#FFFFFF" size={100}/>}
-            description="TypeORM is an Object-Relational Mapper (ORM) for TypeScript and JavaScript that supports various database systems like MySQL, PostgreSQL, SQLite, and others."
-            from_date="2022"
-            to_date="2022"
-          />
-          <Skill.Item
-            title="Firebase"
-            icon={<IoLogoFirebase color="#FFFFFF" size={100}/>}
-            description="Firebase is a comprehensive platform developed by Google for building mobile and web applications. It offers a variety of tools and services, including real-time databases, authentication, cloud storage, hosting, and machine learning capabilities."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Mobile Development"
-          icon={<FaMobile color="#FFFFFF" size={100}/>}
-          knowledge_level={1}
-        >
-          <Skill.Item
-            title="React Native"
-            icon={<TbBrandReactNative color="#FFFFFF" size={100}/>}
-            description="React Native is a framework developed by Facebook for building native mobile applications using JavaScript and React."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Version Control"
-          icon={<GoVersions color="#FFFFFF" size={100}/>}
-          knowledge_level={2}
-        >
-          <Skill.Item
-            title="Git"
-            icon={<FaGitAlt color="#FFFFFF" size={100}/>}
-            description="Git is a distributed version control system (VCS) designed for tracking changes in source code during software development."
-            from_date="2022"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Bitbucket"
-            icon={<FaGitAlt color="#FFFFFF" size={100}/>}
-            description="Bitbucket is a web-based platform for hosting Git repositories, similar to GitHub. It provides Git repository management with features like code collaboration, version control, issue tracking, and continuous integration/continuous deployment (CI/CD) pipelines."
-            from_date="2022"
-            to_date="2023"
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Containerization"
-          icon={<GoContainer color="#FFFFFF" size={100}/>}
-          knowledge_level={1}
-        >
-          <Skill.Item
-            title="Docker"
-            icon={<FaDocker color="#FFFFFF" size={100}/>}
-            description="Docker is a platform and toolset that allows developers to build, deploy, and run applications using containers."
-            from_date="2023"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-        <Skill.Main
-          title="Deployment"
-          icon={<AiOutlineDeploymentUnit color="#FFFFFF" size={100}/>}
-          knowledge_level={2}
-        >
-          <Skill.Item
-            title="AWS"
-            icon={<FaAws color="#FFFFFF" size={100}/>}
-            description="AWS (Amazon Web Services) is a comprehensive and widely adopted cloud computing platform provided by Amazon."
-            from_date="2023"
-            to_date="2024"
-          />
-          <Skill.Item
-            title="Jenkins"
-            icon={<FaJenkins color="#FFFFFF" size={100}/>}
-            description="Jenkins is an open-source automation server used for building, testing, and deploying software projects continuously."
-            from_date="2024"
-            to_date={new Date().getFullYear().toString()}
-          />
-          <Skill.Item
-            title="Vercel"
-            icon={<IoLogoVercel color="#FFFFFF" size={100}/>}
-            description="Vercel is a cloud platform for static sites and serverless functions, optimized for fast and efficient deployments."
-            from_date="2022"
-            to_date={new Date().getFullYear().toString()}
-          />
-        </Skill.Main>
-      </section> */}
+      </section>
+      <section className="w-full min-h-[90vh] flex flex-row flex-nowrap justify-center items-start gap-10 py-20" id="contact"
+      >
+        <div className="w-1/2 h-full flex flex-col justify-end text-end items-end gap-5">
+          <h1
+            className="text-6xl font-extralight text-gray-600"
+          >
+            Get in touch.
+          </h1>
+          <p className="text-xl font-extralight text-gray-500 m-0 p-0">
+            Let&apos;s work together. Contact me through the following methods.
+          </p>
+        </div>
+        <div className="w-1/2 h-full flex flex-col justify-start items-start gap-5">
+          <button
+            className="
+            w-40
+            flex flex-row flex-nowrap justify-start items-center
+            gap-2
+            bg-transparent border-[2px]
+            border-[#1A1A1A] rounded-md box-border text-[#3B3B3B]
+            hover:text-[#fff] hover:bg-[#1A1A1A] hover:[box-shadow:rgba(0,_0,_0,_0.25)_0_8px_15px] hover:-translate-y-[2px]
+            font-[Roobert,-apple-system,BlinkMacSystemFont,'Segoe_UI','Helvetica','Arial,sans-serif','Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol']
+            text-[16px] font-semibold leading-[normal]
+            outline-[none] px-[24px] py-[16px] text-center
+            no-underline [transition:all_300ms_cubic-bezier(.23,_1,_0.32,_1)]
+            active:[box-shadow:none] active:translate-y-[0]
+            cursor-pointer
+            "
+          >
+            <p className="text-base text-extralight">
+              LinkedIn
+            </p>
+            <FaLinkedin size={25}/>
+          </button>
+          <button
+            className="
+            w-40
+            flex flex-row flex-nowrap justify-start items-center
+            gap-2
+            bg-transparent border-[2px]
+            border-[#1A1A1A] rounded-md box-border text-[#3B3B3B]
+            hover:text-[#fff] hover:bg-[#1A1A1A] hover:[box-shadow:rgba(0,_0,_0,_0.25)_0_8px_15px] hover:-translate-y-[2px]
+            font-[Roobert,-apple-system,BlinkMacSystemFont,'Segoe_UI','Helvetica','Arial,sans-serif','Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol']
+            text-[16px] font-semibold leading-[normal]
+            outline-[none] px-[24px] py-[16px] text-center
+            no-underline [transition:all_300ms_cubic-bezier(.23,_1,_0.32,_1)]
+            active:[box-shadow:none] active:translate-y-[0]
+            cursor-pointer
+            "
+          >
+            <p className="text-base text-extralight">
+              E-mail
+            </p>
+            <MdEmail size={25}/>
+          </button>
+          <button
+            className="
+            w-40
+            flex flex-row flex-nowrap justify-start items-center
+            gap-2
+            bg-transparent border-[2px]
+            border-[#1A1A1A] rounded-md box-border text-[#3B3B3B]
+            hover:text-[#fff] hover:bg-[#1A1A1A] hover:[box-shadow:rgba(0,_0,_0,_0.25)_0_8px_15px] hover:-translate-y-[2px]
+            font-[Roobert,-apple-system,BlinkMacSystemFont,'Segoe_UI','Helvetica','Arial,sans-serif','Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol']
+            text-[16px] font-semibold leading-[normal]
+            outline-[none] px-[24px] py-[16px] text-center
+            no-underline [transition:all_300ms_cubic-bezier(.23,_1,_0.32,_1)]
+            active:[box-shadow:none] active:translate-y-[0]
+            cursor-pointer
+            "
+          >
+            <p className="text-base text-extralight">
+              Whatsapp
+            </p>
+            <FaWhatsapp size={25}/>
+          </button>
+        </div>
+      </section>
     </main>
   );
 }
