@@ -175,10 +175,8 @@ export default function Home() {
             <Skill skill="Back-end Development" percentage={65}/>
             <Skill skill="Front-end Development" percentage={80}/>
             <Skill skill="Mobile Development" percentage={23}/>
-            <Skill skill="Database" percentage={72}/>
-            <Skill skill="Code Versioning" percentage={52}/>
-            <Skill skill="Deployment" percentage={52}/>
-            <Skill skill="Containerization" percentage={10}/>
+            <Skill skill="Database Management" percentage={72}/>
+            <Skill skill="DevOps" percentage={55}/>
           </div>
           <div className="w-full flex flex-row justify-start items-center flex-nowrap">
             <Link
