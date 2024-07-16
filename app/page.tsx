@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <main className="w-full overflow-x-hidden min-h-screen h-full flex flex-col justify-start items-center relative">
       <motion.nav 
-        className="w-full h-full flex flex-col text-center items-center justify-start bg-gray-800 overflow-y-hidden fixed top- z-10"
+        className="w-full h-full flex flex-col text-center items-center justify-start bg-gray-800 overflow-y-hidden fixed top- z-20"
         animate ={{
           height: is_open ? '70vh' : '10vh'
         }}
