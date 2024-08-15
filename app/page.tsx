@@ -211,7 +211,8 @@ export default function Home() {
               <Project.Item
                 cover={"https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 title={"Django Rest API"}
-                status={"In Progress"}
+                status={"Done"}
+                url={"https://github.com/pedrohrbarros/django_rest_api"}
               />
               <Project.Item
                 cover={"https://images.unsplash.com/photo-1644329771909-b651e30c41da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
