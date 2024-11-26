@@ -174,9 +174,9 @@ export default function Home() {
           <div className="w-full h-full flex flex-col justify-start items-start overflow-y-scroll gap-4">
             <Skill skill="Back-end Development" percentage={65}/>
             <Skill skill="Front-end Development" percentage={80}/>
-            <Skill skill="Mobile Development" percentage={23}/>
-            <Skill skill="Database Management" percentage={72}/>
-            <Skill skill="DevOps" percentage={55}/>
+            <Skill skill="Mobile Development" percentage={55}/>
+            <Skill skill="Database Management" percentage={60}/>
+            <Skill skill="DevOps" percentage={25}/>
           </div>
           <div className="w-full flex flex-row justify-start items-center flex-nowrap">
             <Link
@@ -215,9 +215,10 @@ export default function Home() {
                 url={"https://github.com/pedrohrbarros/django_rest_api"}
               />
               <Project.Item
-                cover={"https://images.unsplash.com/photo-1644329771909-b651e30c41da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
-                title={"To-do Mobile APP"}
-                status={"Start Soon"}
+                cover={"https://images.unsplash.com/photo-1657776655487-18dcab7b2c65?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                title={"Toolbox"}
+                status={"In Progress"}
+                url={"https://github.com/pedrohrbarros/toolbox_backend"}
               />
             </div>
             <div className="w-full h-full flex flex-row flex-nowrap justify-center items-center">
