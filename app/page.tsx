@@ -217,8 +217,8 @@ export default function Home() {
               <Project.Item
                 cover={"https://images.unsplash.com/photo-1657776655487-18dcab7b2c65?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 title={"Toolbox"}
-                status={"In Progress"}
-                url={"https://github.com/pedrohrbarros/toolbox_backend"}
+                status={"Done"}
+                url={"https://toolbox-pearl-ten.vercel.app/"}
               />
             </div>
             <div className="w-full h-full flex flex-row flex-nowrap justify-center items-center">
@@ -285,6 +285,7 @@ export default function Home() {
             active:[box-shadow:none] active:translate-y-[0]
             cursor-pointer
             "
+            onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros-39077b159/', "_blank")}
           >
             <p className="text-base text-extralight">
               LinkedIn
@@ -306,6 +307,9 @@ export default function Home() {
             active:[box-shadow:none] active:translate-y-[0]
             cursor-pointer
             "
+            onClick={() => {
+              window.location.href = "mailto:pedrobarros232@hotmail.com"
+            }}
           >
             <p className="text-base text-extralight">
               E-mail
@@ -327,6 +331,7 @@ export default function Home() {
             active:[box-shadow:none] active:translate-y-[0]
             cursor-pointer
             "
+            onClick={() => window.open('https://api.whatsapp.com/send?phone=5511954312733', "_blank")}
           >
             <p className="text-base text-extralight">
               Whatsapp
