@@ -97,7 +97,7 @@ export default function Home() {
               <FaLinkedin
                 size={50}
                 className="cursor-pointer text-white hover:text-rose-500 transition-all duration-200"
-                onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros-39077b159/', "_blank")}
+                onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros/', "_blank")}
               />
               <FaWhatsapp
                 size={50}
@@ -285,7 +285,7 @@ export default function Home() {
             active:[box-shadow:none] active:translate-y-[0]
             cursor-pointer
             "
-            onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros-39077b159/', "_blank")}
+            onClick={() => window.open('https://www.linkedin.com/in/pedro-henrique-rodrigues-de-barros/', "_blank")}
           >
             <p className="text-base text-extralight">
               LinkedIn
